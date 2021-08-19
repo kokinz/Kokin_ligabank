@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
+import DatePicker from 'react-datepicker';
 import './app.scss';
 import '../../sass/fonts.scss';
+import '../datepicker/datepicker.scss';
 
 function App() {
+  const [startDate, setStartDate] = useState(new Date());
+
   return (
     <>
       <h1 className="visually-hidden">Лига Банк</h1>
@@ -83,6 +87,15 @@ function App() {
               <option>GBR</option>
               <option>CNY</option>
             </select>
+
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              minDate={new Date().setDate(new Date().getDate() - 7)}
+              maxDate={new Date()}
+            />
+
+            <button className="converter__button button" type="submit">Сохранить результат</button>
           </form>
         </section>
 
