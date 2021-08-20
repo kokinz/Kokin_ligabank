@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import DatePicker from 'react-datepicker';
+import Header from '../header/header';
 import './app.scss';
-import '../../sass/fonts.scss';
-import '../datepicker/datepicker.scss';
 
 function App() {
   const [startDate, setStartDate] = useState(new Date());
@@ -11,41 +10,7 @@ function App() {
     <>
       <h1 className="visually-hidden">Лига Банк</h1>
 
-      <header className="page-header">
-        <a class="header__logo" href="/" aria-label="Лига Банк">
-          <svg viewBox="0 0 30 27" width={30} height={27}>
-            <use xlinkHref="#logo" />
-          </svg>
-        </a>
-
-        <nav class="header__nav nav">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a class="nav__link" href="/">Услуги</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link" href="/">Рассчитать кредит</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link nav__link--active" href="/">Конвертер валют</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link" href="/">Контакты</a>
-            </li>
-            <li class="nav__item">
-              <a class="nav__link" href="/">Задать вопрос</a>
-            </li>
-          </ul>
-
-          <a class="nav__user-link" href="/" aria-label="Авторизация">
-            <svg width="20" height="22">
-              <use xlinkHref="#icon-login"></use>
-            </svg>
-
-            <span>Войти в Интернет-банк</span>
-          </a>
-        </nav>
-      </header>
+      <Header />
 
       <main className="page-main">
         <section className="promo">

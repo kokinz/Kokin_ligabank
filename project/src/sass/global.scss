@@ -1,0 +1,38 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+}
+
+.page-body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 98px;
+  width: 1366px;
+}
+
+.link {
+  font-family: 'Roboto', sans-serif;
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
