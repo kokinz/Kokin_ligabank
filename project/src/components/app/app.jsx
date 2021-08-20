@@ -13,7 +13,9 @@ function App() {
 
       <header className="page-header">
         <a class="header__logo" href="/" aria-label="Лига Банк">
-          <img src="img/content/logo.svg" width="150" height="27" alt="Логотип Лига Банк" />
+          <svg viewBox="0 0 30 27" width={30} height={27}>
+            <use xlinkHref="#logo" />
+          </svg>
         </a>
 
         <nav class="header__nav nav">
