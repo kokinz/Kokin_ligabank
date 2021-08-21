@@ -1,8 +1,12 @@
 .footer {
+  background: #F6F7FF;
+}
+
+.footer__wrapper {
   display: flex;
+
   margin-top: 110px;
   min-height: 224px;
-  background: #F6F7FF;
 }
 
 .footer__logo {

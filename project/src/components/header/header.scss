@@ -1,7 +1,10 @@
 .header {
+  background: #F6F7FF;
+}
+
+.header__wrapper {
   display: flex;
   min-height: 91px;
-  background: #F6F7FF;
 }
 
 .header__logo {

@@ -7,7 +7,7 @@ function Promo() {
 
       <p className="promo__description">Кредиты на любой случай</p>
 
-      <a href="/" class="promo__link link button">Рассчитать кредит</a>
+      <a href="/" className="promo__link link button">Рассчитать кредит</a>
     </section>
   );
 }

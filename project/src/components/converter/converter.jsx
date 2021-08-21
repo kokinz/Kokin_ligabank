@@ -18,12 +18,12 @@ function Converter() {
 
           <input className="converter__first-value converter__value" type="number" placeholder="1000" />
 
-          <select className="converter__first-currency converter__currency">
-            <option>RUB</option>
-            <option>USD</option>
-            <option>EUR</option>
-            <option>GBR</option>
-            <option>CNY</option>
+          <select className="converter__first-currency converter__currency" defaultValue={'RUB'}>
+            <option value="RUB">RUB</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBR">GBR</option>
+            <option value="CNY">CNY</option>
           </select>
         </fieldset>
 
@@ -34,12 +34,12 @@ function Converter() {
 
           <input className="converter__second-value converter__value" type="number" placeholder="13,1234" />
 
-          <select className="converter__second-currency converter__currency">
-            <option>RUB</option>
-            <option selected>USD</option>
-            <option>EUR</option>
-            <option>GBR</option>
-            <option>CNY</option>
+          <select className="converter__second-currency converter__currency" defaultValue={'USD'}>
+            <option value="RUB">RUB</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBR">GBR</option>
+            <option value="CNY">CNY</option>
           </select>
         </fieldset>
 
