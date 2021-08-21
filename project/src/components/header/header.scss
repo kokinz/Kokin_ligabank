@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 149px;
+  width: 147px;
 
   color: #1F1E25;
   font-family: 'WorkSans', sans-serif;
@@ -25,14 +25,14 @@
 .header__nav {
   display: flex;
   justify-content: space-between;
-  width: 963px;
+  width: 965px;
   margin-left: 58px;
 
   color: #1F1E25;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.15px;
 }
 
 .nav__list {
@@ -40,8 +40,8 @@
 }
 
 .nav__item {
-  margin-right: 25px;
-  padding-top: 38px;
+  margin-right: 24px;
+  padding-top: 36px;
 }
 
 .nav__link--active {
@@ -55,4 +55,5 @@
   width: 203px;
 
   color: #1F1E25;
+  letter-spacing: 0;
 }

@@ -19,7 +19,7 @@
 
 .container {
   box-sizing: border-box;
-  margin: 0;
+  margin: 0 auto;
   padding: 0 98px;
   width: 1366px;
 }
@@ -35,4 +35,22 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.button {
+  display: inline-flex;
+  box-sizing: border-box;
+  min-width: 198px;
+  min-height: 51px;
+
+  justify-content: center;
+  align-items: center;
+
+  vertical-align: middle;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+
+  background: #F6F7FF;
+  border-radius: 4px;
 }
