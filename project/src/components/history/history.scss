@@ -1,0 +1,91 @@
+.history {
+  box-sizing: border-box;
+  margin-top: 100px;
+  padding: 44px 70px 39px;
+  width: 1170px;
+
+  background: #F6F7FF;
+  border-radius: 0px 4px 4px 4px;
+}
+
+.history__header {
+  margin: 0;
+  padding: 0;
+
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 39px;
+
+  color: #1F1E25;
+}
+
+.history__list {
+  position: relative;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: space-between;
+
+  width: 1017px;
+  height: 252px;
+  margin: 0;
+  padding: 0;
+  margin-top: 52px;
+
+  list-style: none;
+
+  &::after {
+    position: absolute;
+    content: '';
+
+    top: -35px;
+    left: 516px;
+    width: 1px;
+    height: 289px;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #C1C2CA;
+
+  }
+}
+
+.history__item {
+  box-sizing: border-box;
+  height: 46px;
+
+  letter-spacing: 1.1px;
+}
+
+.history__date {
+  margin-right: 40px;
+}
+
+.history__first-value {
+  margin-right: 5px;
+}
+
+.history__first-currency {
+  display: inline-block;
+  width: 99px;
+
+  vertical-align: top;
+
+  background: url('../../img/arrow.svg') right 12px center/42px 18px no-repeat;
+}
+
+.history__second-value {
+  margin-right: 4px;
+}
+
+.history__button {
+  width: 198px;
+  height: 51px;
+
+  font-size: 16px;
+
+  color: #F6F7FF;
+
+  background: #2C36F2;
+  border-radius: 4px;
+}
