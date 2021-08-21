@@ -8,8 +8,6 @@ function App() {
 
   return (
     <>
-      <h1 className="visually-hidden">Лига Банк</h1>
-
       <Header />
 
       <Main />
