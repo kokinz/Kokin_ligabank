@@ -12,25 +12,25 @@ function Header() {
       </a>
 
       <nav class="header__nav nav">
-        <ul class="nav__list list">
-          <li class="nav__item">
-            <a class="nav__link link" href="/">Услуги</a>
+        <ul class="header__list list">
+          <li class="header__item">
+            <a class="header__link link" href="/">Услуги</a>
           </li>
-          <li class="nav__item">
-            <a class="nav__link link" href="/">Рассчитать кредит</a>
+          <li class="header__item">
+            <a class="header__link link" href="/">Рассчитать кредит</a>
           </li>
-          <li class="nav__item">
-            <a class="nav__link link nav__link--active" href="/">Конвертер валют</a>
+          <li class="header__item">
+            <a class="header__link link nav__link--active" href="/">Конвертер валют</a>
           </li>
-          <li class="nav__item">
-            <a class="nav__link link" href="/">Контакты</a>
+          <li class="header__item">
+            <a class="header__link link" href="/">Контакты</a>
           </li>
-          <li class="nav__item">
-            <a class="nav__link link" href="/">Задать вопрос</a>
+          <li class="header__item">
+            <a class="header__link link" href="/">Задать вопрос</a>
           </li>
         </ul>
 
-        <a class="nav__user-link link" href="/" aria-label="Авторизация">
+        <a class="header__user-link link" href="/" aria-label="Авторизация">
           <svg viewBox="0 0 20 22" width="20" height="22">
             <use xlinkHref="#user-login"></use>
           </svg>
