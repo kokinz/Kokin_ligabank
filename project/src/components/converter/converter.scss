@@ -1,0 +1,121 @@
+.converter__header {
+  margin: 0;
+  padding-top: 42px;
+  font-weight: 700;
+  font-size: 41px;
+  line-height: 65px;
+  color: #1F1E25;
+}
+
+.converter__form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: url('../../img/arrows.svg') top 107px left 562px/54px 36px no-repeat;
+}
+
+.converter__fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  margin-top: 46px;
+  width: 526px;
+  min-height: 106px;
+
+  border: none;
+}
+
+.converter__label {
+  width: 390px;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 30px;
+  color: #1F1E25;
+}
+
+.converter__value {
+  margin-top: 22px;
+  width: 390px;
+  height: 60px;
+
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: #000000;
+
+  border: 1px solid #1F1E25;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  &::placeholder {
+    color: #000000;
+  }
+
+  -moz-appearance:textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.converter__currency {
+  position: relative;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  margin-top: 22px;
+  margin-left: 15px;
+  padding-left: 17px;
+  width: 120px;
+  height: 60px;
+
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 40px;
+
+  cursor: pointer;
+  border: 1px solid #1F1E25;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: url('../../img/select.svg') center right 15px no-repeat;
+}
+
+.converter__datepicker-wrapper {
+  margin-top: 63px;
+}
+
+.converter__datepicker {
+  margin-top: 22px;
+  width: 390px;
+  height: 60px;
+  padding-top: 7px;
+  padding-left: 102px;
+
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  color: #000000;
+
+  border: 1px solid #1F1E25;
+  box-sizing: border-box;
+  border-radius: 4px;
+  cursor: pointer;
+
+  background: url('../../img/calendar.svg') top 5px right 18px/41px 44px no-repeat;
+}
+
+.converter__button {
+  margin-top: 85px;
+  width: 382px;
+  height: 60px;
+
+  color: #F6F7FF;
+  letter-spacing: 0.18px;
+  background: #2C36F2;
+}
