@@ -1,8 +1,66 @@
 import React, {useState} from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 
-function Converter() {
+import {getRates, getIsDataLoaded} from '../../store/rates-data/selectors.js';
+import {Currency} from '../../const.js';
+
+function Converter({rates, isDataLoaded}) {
   const [startDate, setStartDate] = useState(new Date());
+  const [data, setData] = useState({
+    rates,
+    firstCurrency: Currency.RUB,
+    secondCurrency: Currency.USD,
+    firstValue: 1000,
+    secondValue: 12.1231,
+    quotation: null,
+  });
+
+  const handleFirstValueChange = (evt) => {
+    setData({
+      ...data,
+      firstValue: evt.target.value,
+      secondValue: (evt.target.value * data.quotation).toFixed(2),
+    });
+  };
+
+  const handleSecondValueChange = (evt) => {
+    setData({
+      ...data,
+      secondValue: evt.target.value,
+      firstValue: (evt.target.value / data.quotation).toFixed(2),
+    });
+  };
+
+  const handleFirstCurrencyChange = (evt) => {
+    setData({
+      ...data,
+      firstCurrency: evt.target.value,
+      firstValue: (data.secondValue / (rates[data.secondCurrency] / rates[evt.target.value])).toFixed(2),
+      quotation: rates[data.secondCurrency] / rates[evt.target.value],
+    });
+  };
+
+  const handleSecondCurrencyChange = (evt) => {
+    setData({
+      ...data,
+      secondCurrency: evt.target.value,
+      secondValue: (data.firstValue * (rates[evt.target.value] / rates[data.firstCurrency])).toFixed(2),
+      quotation: rates[evt.target.value] / rates[data.firstCurrency],
+    });
+  };
+
+  console.log(isDataLoaded);
+console.log(data.quotation);
+
+  if (!data.quotation && isDataLoaded) {
+    setData({
+      ...data,
+      quotation: rates[data.secondCurrency],
+      secondValue: (data.firstValue * rates[data.secondCurrency]).toFixed(2),
+    });
+  }
 
   return(
     <section className="converter container">
@@ -16,13 +74,13 @@ function Converter() {
             У меня есть
           </label>
 
-          <input className="converter__first-value converter__value" type="number" placeholder="1000" />
+          <input className="converter__first-value converter__value" type="number" value={data.firstValue} onChange={handleFirstValueChange} />
 
-          <select className="converter__first-currency converter__currency" defaultValue={'RUB'}>
+          <select className="converter__first-currency converter__currency" defaultValue={data.firstCurrency} onChange={handleFirstCurrencyChange}>
             <option value="RUB">RUB</option>
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
-            <option value="GBR">GBP</option>
+            <option value="GBP">GBP</option>
             <option value="CNY">CNY</option>
           </select>
         </fieldset>
@@ -32,13 +90,13 @@ function Converter() {
             Хочу приобрести
           </label>
 
-          <input className="converter__second-value converter__value" type="number" placeholder="13,1234" />
+          <input className="converter__second-value converter__value" type="number" value={data.secondValue} onChange={handleSecondValueChange} />
 
-          <select className="converter__second-currency converter__currency" defaultValue={'USD'}>
+          <select className="converter__second-currency converter__currency" defaultValue={data.secondCurrency} onChange={handleSecondCurrencyChange}>
             <option value="RUB">RUB</option>
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
-            <option value="GBR">GBP</option>
+            <option value="GBP">GBP</option>
             <option value="CNY">CNY</option>
           </select>
         </fieldset>
@@ -61,4 +119,21 @@ function Converter() {
   );
 }
 
-export default Converter;
+Converter.propTypes = {
+  rates: PropTypes.objectOf(PropTypes.number.isRequired).isRequired,
+  isDataLoaded: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  rates: getRates(state),
+  isDataLoaded: getIsDataLoaded(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit(authData, handleSubmitError) {
+    dispatch();
+  },
+});
+
+export {Converter};
+export default connect(mapStateToProps, mapDispatchToProps)(Converter);
