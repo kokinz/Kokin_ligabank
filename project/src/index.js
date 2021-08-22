@@ -11,12 +11,14 @@ import {createAPI} from './services/api';
 import rootReducer from './store/root-reduser.js';
 import {fetchRatesList} from './store/api-actions';
 
+import {APIRoute} from './const';
+
 const store = createStore(rootReducer, composeWithDevTools(
   applyMiddleware(thunk.withExtraArgument(createAPI()))
 ));
 
 
-store.dispatch(fetchRatesList());
+store.dispatch(fetchRatesList(APIRoute.TODAY));
 
 ReactDOM.render(
   <React.StrictMode>

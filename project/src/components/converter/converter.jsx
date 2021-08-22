@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 
 import {getRates, getIsDataLoaded} from '../../store/rates-data/selectors.js';
+import {fetchRatesList} from '../../store/api-actions.js';
 import {Currency} from '../../const.js';
+import {upgradeRates} from '../../store/actions.js';
 
-function Converter({rates, isDataLoaded}) {
+function Converter({rates, isDataLoaded, onDateChange}) {
   const [startDate, setStartDate] = useState(new Date());
   const [data, setData] = useState({
     rates,
@@ -51,14 +53,18 @@ function Converter({rates, isDataLoaded}) {
     });
   };
 
-  console.log(isDataLoaded);
-console.log(data.quotation);
+  const handleDateChange = (date) => {
+    setStartDate(date);
+    isDataLoaded = false;
 
-  if (!data.quotation && isDataLoaded) {
+    onDateChange(`${date.getFullYear()}-${(date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : (date.getMonth() + 1)}-${date.getDate()}`);
+  }
+
+  if ((data.quotation !== (rates[data.secondCurrency] / rates[data.firstCurrency])) && isDataLoaded) {
     setData({
       ...data,
-      quotation: rates[data.secondCurrency],
-      secondValue: (data.firstValue * rates[data.secondCurrency]).toFixed(2),
+      quotation: rates[data.secondCurrency] / rates[data.firstCurrency],
+      secondValue: (data.firstValue * (rates[data.secondCurrency] / rates[data.firstCurrency])).toFixed(2),
     });
   }
 
@@ -106,7 +112,7 @@ console.log(data.quotation);
             className={'converter__datepicker'}
             dateFormat="dd.MM.yyyy"
             selected={startDate}
-            onChange={(date) => setStartDate(date)}
+            onChange={handleDateChange}
             minDate={new Date().setDate(new Date().getDate() - 7)}
             maxDate={new Date()}
           />
@@ -122,6 +128,7 @@ console.log(data.quotation);
 Converter.propTypes = {
   rates: PropTypes.objectOf(PropTypes.number.isRequired).isRequired,
   isDataLoaded: PropTypes.bool.isRequired,
+  onDateChange: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -130,8 +137,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit(authData, handleSubmitError) {
-    dispatch();
+  onDateChange(date) {
+    dispatch(upgradeRates());
+    dispatch(fetchRatesList(date));
   },
 });
 

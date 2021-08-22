@@ -1,6 +1,5 @@
 const APIRoute = {
   TODAY: '/latest',
-  HISTORY: '/history',
 };
 
 const Currency = {

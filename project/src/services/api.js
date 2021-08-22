@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_URL = 'https://v6.exchangerate-api.com/v6/f3701845f107ca41b56eaee4/';
+const BACKEND_URL = 'http://api.exchangeratesapi.io/v1/';
 const REQUEST_TIMEOUT = 5000;
 
 const createAPI = (onUnauthorized) => {

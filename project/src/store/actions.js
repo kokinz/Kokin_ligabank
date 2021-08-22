@@ -1,9 +1,6 @@
 const ActionType = {
   LOAD_RATES: 'rates/loadRates',
-  CHANGE_FIRST_CURRENCY: 'rates/changeFirstCurrency',
-  CHANGE_SECOND_CURRENCY: 'rates/changeSecondCurrency',
-  CHANGE_FIRST_VALUE: 'rates/changeFirstValue',
-  CHANGE_SECOND_VALUE: 'rates/changeSecondValue',
+  UPGRADE_RATES: 'rates/upgradeRates',
 };
 
 const loadRates = (rates) => ({
@@ -11,5 +8,9 @@ const loadRates = (rates) => ({
   payload: rates,
 });
 
+const upgradeRates = () => ({
+  type: ActionType.UPGRADE_RATES,
+});
 
-export {ActionType, loadRates};
+
+export {ActionType, loadRates, upgradeRates};
