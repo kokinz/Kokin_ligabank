@@ -22,7 +22,7 @@ function Converter() {
             <option value="RUB">RUB</option>
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
-            <option value="GBR">GBR</option>
+            <option value="GBR">GBP</option>
             <option value="CNY">CNY</option>
           </select>
         </fieldset>
@@ -38,7 +38,7 @@ function Converter() {
             <option value="RUB">RUB</option>
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
-            <option value="GBR">GBR</option>
+            <option value="GBR">GBP</option>
             <option value="CNY">CNY</option>
           </select>
         </fieldset>
