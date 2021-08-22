@@ -72,9 +72,7 @@ function Converter({rates, isDataLoaded, onDateChange, onHistoryAdd}) {
       secondCurrency: data.secondCurrency,
     };
 
-    console.log(historyLog)
     onHistoryAdd(historyLog);
-
   }
 
   if ((data.quotation !== (rates[data.secondCurrency] / rates[data.firstCurrency])) && isDataLoaded) {

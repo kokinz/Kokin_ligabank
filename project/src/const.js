@@ -1,3 +1,5 @@
+const MAX_HISTORY_LOGS = 10;
+
 const APIRoute = {
   TODAY: '/latest',
 };
@@ -10,4 +12,4 @@ const Currency = {
   CNY: 'CNY',
 }
 
-export {APIRoute, Currency};
+export {APIRoute, Currency, MAX_HISTORY_LOGS};

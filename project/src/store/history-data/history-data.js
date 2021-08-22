@@ -1,7 +1,7 @@
 import {ActionType} from '../actions.js';
 
 const initialState = {
-  history: localStorage.getItem('history') ?? [],
+  history: [],
 };
 
 const historyData = (state = initialState, action) => {
