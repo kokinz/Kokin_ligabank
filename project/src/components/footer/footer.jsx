@@ -70,28 +70,28 @@ function Footer() {
 
         <ul className="footer__social">
           <li>
-            <a href="/" aria-label="Facebook">
+            <a href="/" className="link" aria-label="Facebook">
               <svg width="9" height="16" viewBox="0 0 9 16">
                 <use xlinkHref="#facebook"></use>
               </svg>
             </a>
           </li>
           <li>
-            <a href="/" aria-label="Instagram">
+            <a href="/" className="link" aria-label="Instagram">
               <svg width="16" height="16" viewBox="0 0 16 16">
                 <use xlinkHref="#instagram"></use>
               </svg>
             </a>
           </li>
           <li>
-            <a href="/" aria-label="Twitter">
+            <a href="/" className="link" aria-label="Twitter">
               <svg width="16" height="13" viewBox="0 0 16 13">
                 <use xlinkHref="#twitter"></use>
               </svg>
             </a>
           </li>
           <li>
-            <a href="/" aria-label="Youtube">
+            <a href="/" className="link" aria-label="Youtube">
               <svg width="16" height="13" viewBox="0 0 16 13">
                 <use xlinkHref="#youtube"></use>
               </svg>

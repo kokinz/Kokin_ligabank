@@ -41,6 +41,12 @@
 
 .header__link--active {
   color: #2C36F2;
+
+  cursor: default;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .header__user-link {

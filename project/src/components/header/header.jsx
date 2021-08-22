@@ -21,7 +21,7 @@ function Header() {
               <a className="header__link link" href="/">Рассчитать кредит</a>
             </li>
             <li className="header__item">
-              <a className="header__link link nav__link--active" href="/">Конвертер валют</a>
+              <a className="header__link link header__link--active" href="/">Конвертер валют</a>
             </li>
             <li className="header__item">
               <a className="header__link link" href="/">Контакты</a>
