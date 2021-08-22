@@ -1,6 +1,8 @@
 const ActionType = {
   LOAD_RATES: 'rates/loadRates',
   UPGRADE_RATES: 'rates/upgradeRates',
+  ADD_HISTORY: 'history/addHistory',
+  RESET_HISTORY: 'history/resetHistory',
 };
 
 const loadRates = (rates) => ({
@@ -12,5 +14,14 @@ const upgradeRates = () => ({
   type: ActionType.UPGRADE_RATES,
 });
 
+const addHistory = (history) => ({
+  type: ActionType.ADD_HISTORY,
+  payload: history,
+});
 
-export {ActionType, loadRates, upgradeRates};
+const resetHistory = () => ({
+  type: ActionType.RESET_HISTORY,
+});
+
+
+export {ActionType, loadRates, upgradeRates, addHistory, resetHistory};

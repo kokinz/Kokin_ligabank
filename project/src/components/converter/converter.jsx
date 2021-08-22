@@ -6,9 +6,9 @@ import DatePicker from 'react-datepicker';
 import {getRates, getIsDataLoaded} from '../../store/rates-data/selectors.js';
 import {fetchRatesList} from '../../store/api-actions.js';
 import {Currency} from '../../const.js';
-import {upgradeRates} from '../../store/actions.js';
+import {upgradeRates, addHistory} from '../../store/actions.js';
 
-function Converter({rates, isDataLoaded, onDateChange}) {
+function Converter({rates, isDataLoaded, onDateChange, onHistoryAdd}) {
   const [startDate, setStartDate] = useState(new Date());
   const [data, setData] = useState({
     rates,
@@ -60,6 +60,23 @@ function Converter({rates, isDataLoaded, onDateChange}) {
     onDateChange(`${date.getFullYear()}-${(date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : (date.getMonth() + 1)}-${date.getDate()}`);
   }
 
+  const handleHistoryAdd = (evt) => {
+    const date = `${startDate.getDate()}.${(startDate.getMonth() + 1) < 10 ? `0${startDate.getMonth() + 1}` : (startDate.getMonth() + 1)}.${startDate.getFullYear()}`;
+    evt.preventDefault();
+
+    const historyLog = {
+      date,
+      firstValue: data.firstValue,
+      firstCurrency: data.firstCurrency,
+      secondValue: data.secondValue,
+      secondCurrency: data.secondCurrency,
+    };
+
+    console.log(historyLog)
+    onHistoryAdd(historyLog);
+
+  }
+
   if ((data.quotation !== (rates[data.secondCurrency] / rates[data.firstCurrency])) && isDataLoaded) {
     setData({
       ...data,
@@ -74,7 +91,7 @@ function Converter({rates, isDataLoaded, onDateChange}) {
         Конвертер валют
       </h2>
 
-      <form className="converter__form">
+      <form className="converter__form" onSubmit={handleHistoryAdd}>
         <fieldset className="converter__fieldset">
           <label className="converter__label">
             У меня есть
@@ -129,6 +146,7 @@ Converter.propTypes = {
   rates: PropTypes.objectOf(PropTypes.number.isRequired).isRequired,
   isDataLoaded: PropTypes.bool.isRequired,
   onDateChange: PropTypes.func.isRequired,
+  onHistoryAdd: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -141,6 +159,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(upgradeRates());
     dispatch(fetchRatesList(date));
   },
+  onHistoryAdd(history) {
+    dispatch(addHistory(history));
+  }
 });
 
 export {Converter};
