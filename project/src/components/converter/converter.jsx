@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 
 import {getRates, getIsDataLoaded} from '../../store/rates-data/selectors.js';
 import {fetchRatesList} from '../../store/api-actions.js';
-import {Currency} from '../../const.js';
+import {Currency, VALUE_ROUNDING} from '../../const.js';
 import {upgradeRates, addHistory} from '../../store/actions.js';
 
 function Converter({rates, isDataLoaded, onDateChange, onHistoryAdd}) {
@@ -14,8 +14,8 @@ function Converter({rates, isDataLoaded, onDateChange, onHistoryAdd}) {
     rates,
     firstCurrency: Currency.RUB,
     secondCurrency: Currency.USD,
-    firstValue: 1000,
-    secondValue: 12.1231,
+    firstValue: '1000',
+    secondValue: '13,1234',
     quotation: null,
   });
 
@@ -23,7 +23,7 @@ function Converter({rates, isDataLoaded, onDateChange, onHistoryAdd}) {
     setData({
       ...data,
       firstValue: evt.target.value,
-      secondValue: (evt.target.value * data.quotation).toFixed(4),
+      secondValue: (evt.target.value * data.quotation).toFixed(VALUE_ROUNDING),
     });
   };
 
@@ -31,7 +31,7 @@ function Converter({rates, isDataLoaded, onDateChange, onHistoryAdd}) {
     setData({
       ...data,
       secondValue: evt.target.value,
-      firstValue: (evt.target.value / data.quotation).toFixed(4),
+      firstValue: (evt.target.value / data.quotation).toFixed(VALUE_ROUNDING),
     });
   };
 
@@ -39,7 +39,7 @@ function Converter({rates, isDataLoaded, onDateChange, onHistoryAdd}) {
     setData({
       ...data,
       firstCurrency: evt.target.value,
-      secondValue: (data.firstValue * (rates[data.secondCurrency] / rates[evt.target.value])).toFixed(4),
+      secondValue: (data.firstValue * (rates[data.secondCurrency] / rates[evt.target.value])).toFixed(VALUE_ROUNDING),
       quotation: rates[data.secondCurrency] / rates[evt.target.value],
     });
   };
@@ -48,13 +48,14 @@ function Converter({rates, isDataLoaded, onDateChange, onHistoryAdd}) {
     setData({
       ...data,
       secondCurrency: evt.target.value,
-      firstValue: (data.secondValue / (rates[evt.target.value] / rates[data.firstCurrency])).toFixed(4),
+      firstValue: (data.secondValue / (rates[evt.target.value] / rates[data.firstCurrency])).toFixed(VALUE_ROUNDING),
       quotation: rates[evt.target.value] / rates[data.firstCurrency],
     });
   };
 
   const handleDateChange = (date) => {
     setStartDate(date);
+
     isDataLoaded = false;
 
     onDateChange(`${date.getFullYear()}-${(date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : (date.getMonth() + 1)}-${date.getDate()}`);
@@ -62,6 +63,7 @@ function Converter({rates, isDataLoaded, onDateChange, onHistoryAdd}) {
 
   const handleHistoryAdd = (evt) => {
     const date = `${startDate.getDate()}.${(startDate.getMonth() + 1) < 10 ? `0${startDate.getMonth() + 1}` : (startDate.getMonth() + 1)}.${startDate.getFullYear()}`;
+
     evt.preventDefault();
 
     const historyLog = {
@@ -79,7 +81,7 @@ function Converter({rates, isDataLoaded, onDateChange, onHistoryAdd}) {
     setData({
       ...data,
       quotation: rates[data.secondCurrency] / rates[data.firstCurrency],
-      secondValue: (data.firstValue * (rates[data.secondCurrency] / rates[data.firstCurrency])).toFixed(4),
+      secondValue: (data.firstValue * (rates[data.secondCurrency] / rates[data.firstCurrency])).toFixed(VALUE_ROUNDING),
     });
   }
 
@@ -98,11 +100,11 @@ function Converter({rates, isDataLoaded, onDateChange, onHistoryAdd}) {
           <input className="converter__first-value converter__value" type="number" value={data.firstValue} onChange={handleFirstValueChange} />
 
           <select className="converter__first-currency converter__currency" defaultValue={data.firstCurrency} onChange={handleFirstCurrencyChange}>
-            <option value="RUB">RUB</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-            <option value="CNY">CNY</option>
+            <option value={Currency.RUB}>{Currency.RUB}</option>
+            <option value={Currency.USD}>{Currency.USD}</option>
+            <option value={Currency.EUR}>{Currency.EUR}</option>
+            <option value={Currency.GBP}>{Currency.GBP}</option>
+            <option value={Currency.CNY}>{Currency.CNY}</option>
           </select>
         </fieldset>
 
@@ -114,15 +116,15 @@ function Converter({rates, isDataLoaded, onDateChange, onHistoryAdd}) {
           <input className="converter__second-value converter__value" type="number" value={data.secondValue} onChange={handleSecondValueChange} />
 
           <select className="converter__second-currency converter__currency" defaultValue={data.secondCurrency} onChange={handleSecondCurrencyChange}>
-            <option value="RUB">RUB</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-            <option value="CNY">CNY</option>
+            <option value={Currency.RUB}>{Currency.RUB}</option>
+            <option value={Currency.USD}>{Currency.USD}</option>
+            <option value={Currency.EUR}>{Currency.EUR}</option>
+            <option value={Currency.GBP}>{Currency.GBP}</option>
+            <option value={Currency.CNY}>{Currency.CNY}</option>
           </select>
         </fieldset>
 
-        <div className="converter__datepicker-wrapper">
+        <div className="converter__datepicker-wrapper react-datepicker">
           <DatePicker
             className={'converter__datepicker'}
             dateFormat="dd.MM.yyyy"

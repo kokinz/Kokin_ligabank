@@ -3,12 +3,13 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getHistory} from '../../store/history-data/selectors';
 import {resetHistory} from '../../store/actions';
+import {LOG_VALUE_ROUNDING} from '../../const.js';
 
-function History({history, onHistoryReset}) {
+function History({history, onHistoryResetClick}) {
   const handleHistoryReset = (evt) => {
     evt.preventDefault();
 
-    onHistoryReset();
+    onHistoryResetClick();
   }
 
   return(
@@ -24,13 +25,13 @@ function History({history, onHistoryReset}) {
               {log.date}
             </span>
             <span className="history__first-value">
-              {log.firstValue.length > 9 ? `${log.firstValue.split('').slice(0, 9).join('')}...` : log.firstValue}
+              {log.firstValue.length > LOG_VALUE_ROUNDING ? `${log.firstValue.split('').slice(0, LOG_VALUE_ROUNDING).join('')}...` : log.firstValue}
             </span>
             <span className="history__first-currency">
               {log.firstCurrency}
             </span>
             <span className="history__second-value">
-              {log.secondValue.length > 9 ? `${log.secondValue.split('').slice(0, 9).join('')}...` : log.secondValue}
+              {log.secondValue.length > LOG_VALUE_ROUNDING ? `${log.secondValue.split('').slice(0, LOG_VALUE_ROUNDING).join('')}...` : log.secondValue}
             </span>
             <span className="history__second-currency">
               {log.secondCurrency}
@@ -48,7 +49,7 @@ function History({history, onHistoryReset}) {
 
 History.propTypes = {
   history: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-  onHistoryReset: PropTypes.func.isRequired,
+  onHistoryResetClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -56,7 +57,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onHistoryReset() {
+  onHistoryResetClick() {
     dispatch(resetHistory());
   }
 });
