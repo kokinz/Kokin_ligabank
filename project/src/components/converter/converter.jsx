@@ -39,7 +39,7 @@ function Converter({rates, isDataLoaded, onDateChange, onHistoryAdd}) {
     setData({
       ...data,
       firstCurrency: evt.target.value,
-      firstValue: (data.secondValue / (rates[data.secondCurrency] / rates[evt.target.value])).toFixed(2),
+      secondValue: (data.firstValue * (rates[data.secondCurrency] / rates[evt.target.value])).toFixed(2),
       quotation: rates[data.secondCurrency] / rates[evt.target.value],
     });
   };
@@ -48,7 +48,7 @@ function Converter({rates, isDataLoaded, onDateChange, onHistoryAdd}) {
     setData({
       ...data,
       secondCurrency: evt.target.value,
-      secondValue: (data.firstValue * (rates[evt.target.value] / rates[data.firstCurrency])).toFixed(2),
+      firstValue: (data.secondValue / (rates[evt.target.value] / rates[data.firstCurrency])).toFixed(2),
       quotation: rates[evt.target.value] / rates[data.firstCurrency],
     });
   };
