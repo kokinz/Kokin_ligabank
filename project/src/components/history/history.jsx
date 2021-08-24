@@ -24,13 +24,13 @@ function History({history, onHistoryReset}) {
               {log.date}
             </span>
             <span className="history__first-value">
-              {log.firstValue}
+              {log.firstValue.length > 9 ? `${log.firstValue.split('').slice(0, 9).join('')}...` : log.firstValue}
             </span>
             <span className="history__first-currency">
               {log.firstCurrency}
             </span>
             <span className="history__second-value">
-              {log.secondValue}
+              {log.secondValue.length > 9 ? `${log.secondValue.split('').slice(0, 9).join('')}...` : log.secondValue}
             </span>
             <span className="history__second-currency">
               {log.secondCurrency}
